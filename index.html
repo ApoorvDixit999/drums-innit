@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <style>
+        h1{
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            text-align: center;
+            margin-bottom: 1px;
+            margin-top: 5px;
+            padding-bottom: 1px;
+            font-size: 500%;
+        }
+        body{
+            background-color: rgb(87, 161, 221);
+        }
+        p{
+            font-family: monospace;
+            text-align: center;
+            margin-top: 1px;
+            padding-top: 5px;
+            font-size: 150%;
+        }
+        #container{
+            display: grid;
+            grid-template-columns: 2.5fr 2fr 2fr 2fr 2.5fr;
+            align-content: center;
+            row-gap: 0px;
+            column-gap: 0px;
+        }
+        img{
+            width: 18vw;
+            aspect-ratio: 5 / 4;
+        }
+        img:hover{
+            cursor: pointer;
+        }
+        #crash{
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+        }
+        #ride{
+            grid-column: 3 / 4;
+            grid-row: 1 / 2;
+        }
+        #splash{
+            grid-column: 4 / 5;
+            grid-row: 1 / 2;
+        }
+        #hi-hat{
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+        }
+        #kickdrum{
+            grid-column: 3 / 4;
+            grid-row: 2 / 3;
+        }
+        #snare{
+            grid-column: 4 / 5;
+            grid-row: 2 / 3;
+        }
+        #floor_tom{
+            grid-column: 2 / 3;
+            grid-row: 3 / 4;
+        }
+        #high_tom{
+            grid-column: 3 / 4;
+            grid-row: 3 / 4;
+        }
+        #low_tom{
+            grid-column: 4 / 5;
+            grid-row: 3 / 4;
+        }
+        @media (max-width:1000px){
+            img{
+                width: 25vw;
+            }
+        }
+        .help{
+            z-index: 2;
+            float: left;
+            position: relative;
+        }
+        .help:hover{
+            color: white;
+        }
+        .help-pic{
+            background-color: steelblue;
+            float: left;
+            position: absolute;
+            display: none;
+            z-index: 2;
+            width: 500%;
+            opacity: 100%;
+        }
+        .help-pic #p{
+            font-family: monospace;
+            color: white;
+            text-align: left;
+            padding-left: 20px;
+        }
+        .help:hover .help-pic{
+            float: left;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="help">
+        <p type="button" >Help</p>
+        <div class="help-pic">
+            <p id="p">
+                R - Crash<br>T - Ride<br>Y - Splash<br>F - Hi-hat<br>G - Kickdrum<br>H - Snare<br>V - Floor tom<br>B - High tom<br>N - Low tom
+            </p>
+        </div>
+    </div>
+    <h1>Drums, innit</h1>
+    <p>Ba Dum Tsssssss . . . . . . . . </p><br><br><br><br>
+    <div id="container">
+        <img type="button" id="crash" src="./Drums project/row-1-column-1.png">
+        <img type="button" id="ride" src="./Drums project/row-1-column-2.png">
+        <img type="button" id="splash" src="./Drums project/row-1-column-3.png">
+        <img type="button" id="hi-hat" src="./Drums project/row-2-column-1.png">
+        <img type="button" id="kickdrum" src="./Drums project/row-2-column-2.png">
+        <img type="button" id="snare" src="./Drums project/row-2-column-3.png">
+        <img type="button" id="floor_tom" src="./Drums project/row-3-column-1.png">
+        <img type="button" id="high_tom" src="./Drums project/row-3-column-2.png">
+        <img type="button" id="low_tom" src="./Drums project/row-3-column-3.png">
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        $("img").mousedown(function(){
+            $("body").css("background-color","steelblue");
+        });
+        $("img").mouseup(function(){
+            $("body").css("background-color","rgb(87, 161, 221)");
+            $(this).css("opacity","1");
+        });
+        $("img").mousedown(function(){
+            var x = $(this).attr("id");
+            playSound(x);
+            $(this).css("opacity","0.8");
+        });
+        $(document).on("keydown", function(){        
+            $("body").css("background-color","steelblue");
+        });
+        $(document).on("keyup", function(){        
+            $("body").css("background-color","rgb(87, 161, 221)");
+        });
+        $(document).on("keydown", function(e){
+            if (e.which == 82) {
+                var crash = new Audio("./Drums project/crash.mp3");
+                crash.play();
+                $("#crash").css("opacity","0.8");
+            }
+            if (e.which == 84) {
+                var ride = new Audio("./Drums project/ride.mp3");
+                ride.play();
+                $("#ride").css("opacity","0.8");
+            }
+            if (e.which == 89) {
+                var splash = new Audio("./Drums project/splash.mp3");
+                splash.play();
+                $("#splash").css("opacity","0.8");
+            }
+            if (e.which == 70) {
+                var hi = new Audio("./Drums project/hi-hat.mp3");
+                hi.play();
+                $("#hi-hat").css("opacity","0.8");
+            }
+            if (e.which == 71) {
+                var kickdrum = new Audio("./Drums project/kickdrum.mp3");
+                kickdrum.play();
+                $("#kickdrum").css("opacity","0.8");
+            }
+            if (e.which == 72) {
+                var snare = new Audio("./Drums project/snare.mp3");
+                snare.play();
+                $("#snare").css("opacity","0.8");
+            }
+            if (e.which == 86) {
+                var floor_tom = new Audio("./Drums project/floor_tom.mp3");
+                floor_tom.play();
+                $("#floor_tom").css("opacity","0.8");
+            }
+            if (e.which == 66) {
+                var high_tom = new Audio("./Drums project/high_tom.mp3");
+                high_tom.play();
+                $("#high_tom").css("opacity","0.8");
+            }
+            if (e.which == 78) {
+                var low_tom = new Audio("./Drums project/low_tom.mp3");
+                low_tom.play();
+                $("#low_tom").css("opacity","0.8");
+            }
+        });
+        $(document).on("keyup", function(e){
+            if (e.which == 82) {
+                $("#crash").css("opacity","1");
+            }
+            if (e.which == 84) {
+                $("#ride").css("opacity","1");
+            }
+            if (e.which == 89) {
+                $("#splash").css("opacity","1");
+            }
+            if (e.which == 70) {
+                $("#hi-hat").css("opacity","1");
+            }
+            if (e.which == 71) {
+                $("#kickdrum").css("opacity","1");
+            }
+            if (e.which == 72) {
+                $("#snare").css("opacity","1");
+            }
+            if (e.which == 86) {
+                $("#floor_tom").css("opacity","1");
+            }
+            if (e.which == 66) {
+                $("#high_tom").css("opacity","1");
+            }
+            if (e.which == 78) {
+                $("#low_tom").css("opacity","1");
+            }
+        });
+        function playSound(x) {
+            var audio = new Audio("./Drums project/" + x + ".mp3");
+            audio.play();
+        }
+    </script>
+</body>
+</html>
