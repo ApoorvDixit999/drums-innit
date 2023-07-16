@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>index</title>
     <style>
+        *{
+            touch-action: manipulation;
+        }
         h1{
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
             text-align: center;
@@ -74,7 +77,13 @@
         }
         @media (max-width:1000px){
             img{
-                width: 25vw;
+                width: 32vw;
+            }
+            p{
+                font-size: 300%;
+            }
+            img{
+                aspect-ratio: 1 / 1;
             }
         }
         .help{
@@ -114,9 +123,8 @@
                 R - Crash<br>T - Ride<br>Y - Splash<br>F - Hi-hat<br>G - Kickdrum<br>H - Snare<br>V - Floor tom<br>B - High tom<br>N - Low tom
             </p>
         </div>
-    </div>
-    <h1>Drums, innit</h1>
-    <p>Ba Dum Tsssssss . . . . . . . . </p><br><br><br><br>
+    </div><br><br><br>
+    <h1>Drums, innit</h1><br><br>
     <div id="container">
         <img type="button" id="crash" src="./Drums project/row-1-column-1.png">
         <img type="button" id="ride" src="./Drums project/row-1-column-2.png">
